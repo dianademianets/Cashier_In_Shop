@@ -5,7 +5,7 @@ import {ICashier, ICashierToken} from '../../models';
 import {ActionEnum} from '../../constants';
 
 class CashierService {
-  getAllCashiers(findObject: Partial<ICashier>): Promise<ICashier | null> {
+  getAllCashiers(findObject: Partial<ICashier>): Promise<ICashier | any> {
     return CashierModel.find(findObject).exec();
   }
 
@@ -23,11 +23,11 @@ class CashierService {
     return cashierToCreate.save();
   }
 
-  addActionToken(cashierId: string, tokenObject: ICashierToken): Promise<ICashier| null> {
+  addActionToken(cashierId: string, tokenObject: ICashierToken): Promise<ICashier| any> {
     return CashierModel.update(
       {_id: Types.ObjectId(cashierId)}, {$push: {tokens: tokenObject}}).exec();}
 
-  updateCashierByParams(params: Partial<ICashier>, update: Partial<ICashier>): Promise<ICashier| null> {
+  updateCashierByParams(params: Partial<ICashier>, update: Partial<ICashier>): Promise<ICashier| any> {
     return CashierModel.updateOne(params, update, {new: true}).exec();
   }
 
