@@ -14,8 +14,8 @@ import {
 
 const router = Router();
 router.get('/', cashierController.getAllCashiers);
-router.get('/cashier', checkIsCashierValidMiddleware, cashierController.getTargetCashiers1);
-router.get('/cashier', checkIsCashierValidMiddleware, cashierController.getTargetCashiers2);
+router.get('/cashier/target1', checkIsCashierValidMiddleware, cashierController.getTargetCashiers1);
+router.get('/cashier/target2', checkIsCashierValidMiddleware, cashierController.getTargetCashiers2);
 router.post('/', checkIsCashierValidMiddleware, checkIsEmailExistsMiddleware, cashierController.createCashier);
 router.post('/confirm', checkConfirmTokenMiddleware,checkIsCashierConfirmedMiddleware, cashierController.confirmCashier);
 router.post(
